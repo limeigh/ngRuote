@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ngRouter</title>
+</head>
+<body ng-app="myApp">
+	<div ng-view></div>
+	<script src="libs/angular.min.js"></script>
+	<script src="libs/angular-route.js"></script>
+	<script>
+		var app=angular.module('myApp',['ngRoute'])
+		app.config(['$routeProvider',function($routeProvider){
+			$routeProvider.when('/ali',{
+				template:'<p>Hello World!!</p>'
+			}).when('/baidu',{
+				template:'<p>baidu!</p>'
+			})
+		}])
+	</script>
+</body>
+</html>
