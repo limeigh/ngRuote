@@ -11,11 +11,26 @@
 	<script>
 		var app=angular.module('myApp',['ngRoute'])
 		app.config(['$routeProvider',function($routeProvider){
-			$routeProvider.when('/ali',{
-				template:'<p>Hello World!!</p>'
-			}).when('/baidu',{
-				template:'<p>baidu!</p>'
+			$routeProvider.when('/company/:name?',{
+				template:'<p>{{msg}}</p>',
+				controller:'routeController'
 			})
+			// .when('/baidu',{
+			// 	template:'<p>{{msg1}}</p>',
+			// 	controller:'routeController'
+			// })
+			.otherwise({
+				redirectTo:'/company/ali'
+			})
+		}])
+		app.controller('routeController',['$scope','$routeParams',function($scope,$routeParams){
+			// console.dir($routeParams)
+			$scope.companys={
+				baidu:'i am baidu',
+				ali:'i am ali',
+			    tenxun:'i am tenxun'
+			}
+			$scope.msg=$scope.companys[$routeParams.name]
 		}])
 	</script>
 </body>
